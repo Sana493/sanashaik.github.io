@@ -1,135 +1,152 @@
-/* Global Styles */
+/* RESET & BASE */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #f4f6f8, #eef1f4);
-  color: #333;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #f7f9fc, #eef2f7);
+  color: #2c3e50;
   line-height: 1.6;
 }
 
-/* Header */
+/* HEADER (Hero Section) */
 header {
-  background: linear-gradient(135deg, #2c3e50, #1f2f3f);
+  background: linear-gradient(135deg, #6c63ff, #4e54c8);
   color: white;
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  letter-spacing: 1px;
+  font-size: 3rem;
+  margin-bottom: 15px;
 }
 
 header p {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  opacity: 0.9;
+  font-size: 1.15rem;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: auto;
 }
 
-/* Navigation */
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin: 20px 10px 0;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #6c63ff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background-color: white;
+  color: #6c63ff;
+}
+
+/* NAV */
 nav {
-  background-color: #34495e;
-  padding: 14px 0;
+  background-color: white;
+  padding: 16px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 nav a {
-  color: white;
   margin: 0 18px;
   text-decoration: none;
+  color: #444;
   font-weight: 600;
-  font-size: 0.95rem;
-  position: relative;
   transition: color 0.3s ease;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background-color: #1abc9c;
-  transition: width 0.3s ease;
-}
-
 nav a:hover {
-  color: #1abc9c;
+  color: #6c63ff;
 }
 
-nav a:hover::after {
-  width: 100%;
-}
-
-/* Sections */
+/* SECTIONS */
 section {
-  background-color: white;
-  padding: 50px 30px;
-  max-width: 900px;
-  margin: 40px auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 0 20px;
 }
 
-section p {
-  font-size: 1rem;
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* PORTFOLIO GRID */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.card p {
   color: #555;
 }
 
-/* Headings */
-h2 {
-  color: #2c3e50;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  position: relative;
+/* CARD BUTTON */
+.card .btn {
+  margin-top: 15px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
 }
 
-h2::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background-color: #1abc9c;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  border-radius: 2px;
-}
-
-/* Footer */
+/* FOOTER */
 footer {
-  background: linear-gradient(135deg, #2c3e50, #1f2f3f);
+  background: #1f1f2e;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 25px;
+  margin-top: 80px;
   font-size: 0.9rem;
-  margin-top: 60px;
+  opacity: 0.9;
 }
 
-footer p {
-  margin: 0;
-  opacity: 0.85;
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 35px 20px;
-    margin: 25px 15px;
-  }
-
-  nav a {
-    margin: 0 10px;
+    font-size: 2.2rem;
   }
 }
