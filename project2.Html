@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project 2 – Diabetes Prediction Without Key Features</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left logo">SS</div>
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="hero small-hero">
+  <h1>🩺 When the Most Important Data Disappears</h1>
+  <p class="subtitle">Understanding Diabetes Beyond One Number</p>
+</header>
+
+<!-- CONTENT -->
+<section class="blog-content">
+
+<h2>1. Project Title</h2>
+<p><strong>“When the Most Important Data Disappears: Can We Still Predict Diabetes?”</strong></p>
+
+<h2>2. Motivation</h2>
+<p>
+Diabetes prediction models often rely heavily on glucose — the strongest indicator of diabetes. 
+But real‑world healthcare data is often incomplete. This project explores whether machine learning 
+models can still make meaningful predictions when glucose is removed.
+</p>
+
+<h2>3. Dataset</h2>
+<p>
+The Pima Indians Diabetes Dataset contains 768 rows and 8 features:
+</p>
+
+<ul>
+  <li>Pregnancies</li>
+  <li>Glucose</li>
+  <li>Blood Pressure</li>
+  <li>Skin Thickness</li>
+  <li>Insulin</li>
+  <li>BMI</li>
+  <li>Diabetes Pedigree Function</li>
+  <li>Age</li>
+</ul>
+
+<p>Target variable: <strong>Outcome</strong> (0 = no diabetes, 1 = diabetes)</p>
+
+<h2>4. Data Preprocessing</h2>
+<ul>
+  <li>Replaced unrealistic zeros with median values</li>
+  <li>Standardized numerical features</li>
+  <li>Split data into 80% training, 20% testing</li>
+  <li>Used stratification to preserve class balance</li>
+</ul>
+
+<h2>5. Exploratory Data Analysis</h2>
+<p>Glucose had the strongest correlation with diabetes, followed by BMI and Age.</p>
+<img src="images/diabetes_heatmap.png" class="chart">
+
+<h2>6. Experiments</h2>
+
+<h3>Experiment 1 — All Features</h3>
+<p>Highest accuracy. Glucose dominated feature importance.</p>
+
+<h3>Experiment 2 — Remove Glucose</h3>
+<p>Accuracy dropped. BMI and Age became top predictors.</p>
+
+<h3>Experiment 3 — Remove Glucose + BMI + Age</h3>
+<p>Further accuracy decline. Remaining features still carried weak signals.</p>
+
+<h3>Experiment 4 — Weak Features Only</h3>
+<p>Lowest performance but still above random guessing.</p>
+
+<h2>7. Models Used</h2>
+<ul>
+  <li>Logistic Regression</li>
+  <li>Decision Tree</li>
+  <li>Random Forest (most robust)</li>
+</ul>
+
+<h2>8. Evaluation Metrics</h2>
+<ul>
+  <li>Accuracy</li>
+  <li>Confusion Matrix</li>
+  <li>Precision, Recall, F1‑score</li>
+  <li>ROC‑AUC (primary metric)</li>
+</ul>
+
+<h2>9. Feature Importance</h2>
+<img src="images/feature_importance_full.png" class="chart">
+<img src="images/feature_importance_noglucose.png" class="chart">
+
+<h2>10. Interpretation & Insights</h2>
+<p>
+Models can still function without glucose. Random Forest is the most robust. 
+Performance degrades gradually, not instantly. Even weak features contain hidden patterns.
+</p>
+
+<h2>11. Limitations & Ethics</h2>
+<ul>
+  <li>Dataset limited to Pima Indian women</li>
+  <li>May not generalize to broader populations</li>
+  <li>Imputation introduces bias</li>
+  <li>Models are predictive, not diagnostic</li>
+</ul>
+
+<h2>12. Conclusion</h2>
+<p>
+Even when the most important data disappears, meaningful patterns remain. 
+This highlights the importance of building models that are robust and adaptable to incomplete data.
+</p>
+
+<h2>13. Resources</h2>
+<p>Pima Indians Diabetes Dataset (Kaggle)</p>
+
+</section>
+
+<footer>
+  <p>© 2026 Sana Shaik</p>
+</footer>
+
+</body>
+</html>
