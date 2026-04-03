@@ -32,6 +32,14 @@
       max-width: 800px;
     }
     .two-col-figures .figure-block { margin: 0; }
+    .four-col-figures {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 30px auto;
+      max-width: 800px;
+    }
+    .four-col-figures .figure-block { margin: 0; }
     .callout {
       background: #f7f4ff;
       border-left: 4px solid #6a5acd;
@@ -57,7 +65,7 @@
     .exp-card h4 { color: #6a5acd; margin-bottom: 6px; font-size: 0.95rem; }
     .exp-card p { margin: 0; font-size: 0.9rem; color: #555; }
     @media (max-width: 600px) {
-      .two-col-figures, .experiment-grid { grid-template-columns: 1fr; }
+      .two-col-figures, .experiment-grid, .four-col-figures { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -109,23 +117,30 @@
   <li><strong>Age</strong> — in years</li>
 </ul>
 
-<div class="two-col-figures">
-  <div class="figure-block">
-    <img src="images/class_distribution.png" alt="Class distribution chart">
-    <p class="figure-caption">Fig 1. Class distribution — roughly 65% non-diabetic, 35% diabetic.</p>
-  </div>
-  <div class="figure-block">
-    <img src="images/diabetes_heatmap.png" alt="Correlation heatmap">
-    <p class="figure-caption">Fig 2. Feature correlation heatmap. Glucose shows the strongest link to Outcome.</p>
-  </div>
+<h2>3. Exploratory Data Analysis</h2>
+<p>
+  Before building any models, it's important to understand how each feature is distributed
+  and how features relate to one another.
+</p>
+
+<div class="figure-block">
+  <img src="images/histograms.png" alt="Feature distribution histograms">
+  <p class="figure-caption">Fig 1. Distribution of all 9 variables. Notice that Insulin and SkinThickness are heavily right-skewed, and Outcome shows the class imbalance (~65% non-diabetic).</p>
+</div>
+
+<div class="figure-block">
+  <img src="images/diabetes_heatmap.png" alt="Correlation heatmap">
+  <p class="figure-caption">Fig 2. Correlation heatmap. Glucose has the strongest correlation with Outcome (0.49), followed by BMI (0.31) and Age (0.24).</p>
 </div>
 
 <div class="callout">
-  <strong>Key insight from EDA:</strong> Glucose has the highest correlation with diabetes outcome (~0.49),
+  <strong>Key insight from EDA:</strong> Glucose has the highest correlation with diabetes outcome (0.49),
   followed by BMI and Age. This makes Glucose the most critical — and most interesting — feature to remove.
+  The heatmap also reveals that SkinThickness and BMI are moderately correlated with each other (0.54),
+  which is expected since both relate to body composition.
 </div>
 
-<h2>3. Data Preprocessing</h2>
+<h2>4. Data Preprocessing</h2>
 <p>
   Several columns contained zeros that are biologically impossible (e.g., a BMI of 0 or blood pressure of 0).
   These were treated as <em>missing values</em> and replaced with each column's median, computed only from
@@ -138,7 +153,7 @@
   <li>Fixed random seed (42) for full reproducibility</li>
 </ul>
 
-<h2>4. Experiments</h2>
+<h2>5. Experiments</h2>
 <p>
   Three models were trained across four feature configurations, each designed to answer:
   <em>how much does accuracy drop as we remove the most predictive features?</em>
@@ -163,64 +178,81 @@
   </div>
 </div>
 
-<h2>5. Models Used</h2>
+<h2>6. Models Used</h2>
 <ul>
   <li><strong>Logistic Regression</strong> — linear baseline, interpretable coefficients</li>
   <li><strong>Decision Tree</strong> — non-linear, prone to overfitting without pruning</li>
   <li><strong>Random Forest</strong> — ensemble of 200 trees, most robust overall</li>
 </ul>
 
-<h2>6. Results</h2>
+<h2>7. Results: Model Accuracy Across Experiments</h2>
 
 <div class="figure-block">
   <img src="images/model_comparison.png" alt="Model accuracy across experiments">
-  <p class="figure-caption">Fig 3. Accuracy of each model across the four experiments. Random Forest consistently outperforms.</p>
+  <p class="figure-caption">Fig 3. Accuracy of each model across all four experiments. Random Forest consistently leads, and all models remain above 60% even in the weakest feature set.</p>
 </div>
 
 <div class="callout">
   <strong>What this tells us:</strong> Performance degrades <em>gradually</em> — not catastrophically — as features
-  are removed. Even with only weak features, all models beat random guessing (50%). Random Forest is the most resilient.
+  are removed. Even with only weak features (Experiment 4), all models beat random guessing (50%).
+  Random Forest is the most resilient, never dropping below ~67%.
 </div>
 
-<h2>7. Feature Importance</h2>
+<h2>8. Confusion Matrices — Logistic Regression Across Experiments</h2>
+<p>
+  These matrices show exactly where the Logistic Regression model makes mistakes in each experiment.
+  The rows represent the true class; the columns represent predicted class.
+</p>
+
+<div class="four-col-figures">
+  <div class="figure-block">
+    <img src="images/cm_exp1_lr.png" alt="Confusion matrix Experiment 1 Logistic Regression">
+    <p class="figure-caption">Fig 4a. Exp 1 (All Features): 82 correct negatives, 27 correct positives.</p>
+  </div>
+  <div class="figure-block">
+    <img src="images/cm_exp2_lr.png" alt="Confusion matrix Experiment 2 Logistic Regression">
+    <p class="figure-caption">Fig 4b. Exp 2 (No Glucose): Only 25 diabetic cases caught vs. 27 in Exp 1.</p>
+  </div>
+  <div class="figure-block">
+    <img src="images/cm_exp3_lr.png" alt="Confusion matrix Experiment 3 Logistic Regression">
+    <p class="figure-caption">Fig 4c. Exp 3 (No Glu/BMI/Age): False negatives rise to 33 — the model misses more diabetics.</p>
+  </div>
+  <div class="figure-block">
+    <img src="images/cm_exp4_lr.png" alt="Confusion matrix Experiment 4 Logistic Regression">
+    <p class="figure-caption">Fig 4d. Exp 4 (Weak Only): Similar to Exp 3 — weak features still detect some true positives.</p>
+  </div>
+</div>
+
+<p>
+  In a medical context, <strong>false negatives</strong> (predicting "no diabetes" when the patient actually has it)
+  are more dangerous than false positives. Notice how false negatives increase from 27 in Experiment 1
+  to 33 in Experiments 3 and 4 — a clear cost of losing key features.
+</p>
+
+<h2>9. Feature Importance</h2>
 <p>
   Random Forest provides built-in feature importance scores — a measure of how much each variable
-  contributes to reducing prediction error across all decision trees.
+  contributes to reducing prediction error across all 200 decision trees.
 </p>
 
 <div class="two-col-figures">
   <div class="figure-block">
     <img src="images/feature_importance_full.png" alt="Feature importance with all features">
-    <p class="figure-caption">Fig 4. With all features, Glucose dominates by a wide margin.</p>
+    <p class="figure-caption">Fig 5. With all features, Glucose dominates at ~0.27 importance — nearly double BMI's contribution.</p>
   </div>
   <div class="figure-block">
     <img src="images/feature_importance_noglucose.png" alt="Feature importance without glucose">
-    <p class="figure-caption">Fig 5. Without Glucose, BMI and Age rise to fill the gap.</p>
+    <p class="figure-caption">Fig 6. Without Glucose, BMI rises to the top (~0.21), followed by DiabetesPedigreeFunction and Age.</p>
   </div>
 </div>
 
-<p>
-  This shift is meaningful: the model doesn't simply fail when Glucose is gone — it adapts,
-  redistributing importance to the next best available signals.
-</p>
-
-<h2>8. Evaluation & Confusion Matrix</h2>
-<p>
-  Accuracy alone can be misleading on imbalanced datasets. The confusion matrix below shows
-  where the best-performing model (Random Forest, all features) makes mistakes.
-</p>
-
-<div class="figure-block" style="max-width:520px">
-  <img src="images/confusion_matrix.png" alt="Confusion matrix for best model">
-  <p class="figure-caption">Fig 6. The model catches most true positives but occasionally misses diabetic cases (false negatives).</p>
+<div class="callout">
+  <strong>The shift matters:</strong> When Glucose is removed, the model doesn't collapse — it redistributes
+  importance to the next best signals. BMI, family history (DiabetesPedigreeFunction), and Age each
+  contribute more meaningfully, showing these features carry real predictive information on their own.
 </div>
 
-<p>
-  In a medical context, <strong>false negatives</strong> (predicting "no diabetes" when the patient has it)
-  carry higher risk than false positives. This is a critical consideration for any clinical AI tool.
-</p>
-
-<h2>9. Interpretation & Insights</h2>
+<h2>10. Interpretation & Insights</h2>
 <p>
   The core finding: <strong>models can still function meaningfully without glucose.</strong>
   The degradation is real but gradual. Even the weakest feature set retains predictive power,
@@ -228,20 +260,22 @@
   that goes beyond a single lab result.
 </p>
 <p>
-  Random Forest consistently outperformed the other two models — likely because it captures non-linear
-  interactions between features that logistic regression cannot model.
+  Random Forest consistently outperformed the other two models across all experiments — likely because
+  it captures non-linear interactions between features that logistic regression simply cannot model.
+  The confusion matrices make clear that the cost of missing features is paid primarily in
+  <em>missed diabetic cases</em>, not in false alarms.
 </p>
 
-<h2>10. Limitations & Ethics</h2>
+<h2>11. Limitations & Ethics</h2>
 <ul>
   <li>Dataset is limited to <strong>Pima Indian women</strong> — results may not generalize to other demographics</li>
   <li>Median imputation for missing zeros introduces some <strong>statistical bias</strong></li>
-  <li>No hyperparameter tuning — Decision Tree may be overfitting</li>
-  <li>Class imbalance (~65/35) was not explicitly corrected; could affect recall for the minority class</li>
-  <li>These are <strong>predictive tools, not diagnostic instruments</strong> — clinical decisions require medical professionals</li>
+  <li>No hyperparameter tuning — Decision Tree in particular may be overfitting</li>
+  <li>Class imbalance (~65/35) was not explicitly corrected; this could suppress recall for diabetic cases</li>
+  <li>These are <strong>predictive tools, not diagnostic instruments</strong> — clinical decisions must involve medical professionals</li>
 </ul>
 
-<h2>11. Conclusion</h2>
+<h2>12. Conclusion</h2>
 <p>
   Even when the most important data disappears, meaningful patterns remain. This has real implications
   for healthcare AI: models shouldn't be abandoned just because a key variable is missing.
@@ -249,7 +283,7 @@
   impactful insights — and better patient outcomes.
 </p>
 
-<h2>12. Resources & AI Transparency</h2>
+<h2>13. Resources & AI Transparency</h2>
 <p>
   <strong>Dataset:</strong> Pima Indians Diabetes Dataset via
   <a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank">Kaggle / UCI ML Repository</a>.
