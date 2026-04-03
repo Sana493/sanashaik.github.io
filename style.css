@@ -26,9 +26,10 @@ body {
   z-index: 10;
 }
 
-.nav-left {
-  font-weight: 700;
-  font-size: 1.2rem;
+.logo {
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 }
 
 .nav-right a {
@@ -120,6 +121,40 @@ body {
 .btn:hover {
   background: #222;
   color: white;
+}
+
+/* BLOG + PROJECT CONTENT */
+.blog-content {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.blog-content h2, 
+.blog-content h3 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.blog-content p,
+.blog-content ul {
+  margin-bottom: 20px;
+}
+
+.blog-content ul {
+  padding-left: 20px;
+}
+
+.blog-content li {
+  margin-bottom: 8px;
+}
+
+/* SMALL HERO FOR BLOG/PROJECT PAGES */
+.small-hero {
+  padding: 80px 20px 60px;
 }
 
 /* FOOTER */
