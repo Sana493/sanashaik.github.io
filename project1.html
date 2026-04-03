@@ -9,6 +9,7 @@
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-left logo">SS</div>
   <div class="nav-right">
@@ -19,36 +20,131 @@
   </div>
 </nav>
 
+<!-- HEADER -->
 <header class="hero small-hero">
-  <h1>Sleep Health & Lifestyle Analysis</h1>
+  <h1>📊 Sleep Health & Lifestyle Analysis</h1>
   <p class="subtitle">A Data Science Exploration by Sana Shaik</p>
 </header>
 
+<!-- CONTENT -->
 <section class="blog-content">
-  <!-- Your full Project 1 write-up goes here -->
-  <h2>1. Problem Definition</h2>
-  <p>Sleep is essential for both physical and mental health...</p>
 
-  <h2>2. Data Description</h2>
-  <p>The dataset comes from Kaggle...</p>
+<h2>1. Problem Definition</h2>
+<p>
+Sleep plays a critical role in physical health, mental well‑being, productivity, and long‑term disease prevention. 
+Yet many people struggle to get enough sleep due to stress, work schedules, lifestyle habits, or environmental factors.
+</p>
 
-  <h2>3. Data Cleaning & Preparation</h2>
-  <p>I checked for missing values...</p>
+<p>This project explores four key questions:</p>
+<ul>
+  <li>How much do people sleep on average?</li>
+  <li>Does sleep duration vary by occupation?</li>
+  <li>Is there a relationship between stress level and sleep duration?</li>
+  <li>What patterns exist between lifestyle factors and sleep?</li>
+</ul>
 
-  <h2>4. Exploratory Data Analysis</h2>
-  <p>Most people sleep between 6–7 hours...</p>
+<p>
+These questions matter because sleep affects nearly every aspect of daily life. Students, healthcare workers, and 
+professionals in high‑stress fields may especially benefit from understanding how stress and occupation influence sleep patterns.
+</p>
 
-  <h2>5. Storytelling & Interpretation</h2>
-  <p>The strongest relationship is between stress and sleep...</p>
+<h2>2. Data Description</h2>
+<p>
+The dataset used is the <strong>Sleep Health and Lifestyle Dataset</strong> from Kaggle. Each row represents one individual and includes:
+</p>
 
-  <h2>6. Limitations & Reflection</h2>
-  <p>The dataset is small and self‑reported...</p>
+<ul>
+  <li>Gender</li>
+  <li>Age</li>
+  <li>Occupation</li>
+  <li>Sleep Duration (hours)</li>
+  <li>Quality of Sleep</li>
+  <li>Stress Level</li>
+  <li>Physical Activity Level</li>
+  <li>BMI Category</li>
+  <li>Heart Rate</li>
+  <li>Daily Steps</li>
+</ul>
 
-  <h2>7. Code</h2>
-  <p>Notebook: Project_1_Defining_a_Data_Science_Problem_&_Understanding_Data.ipynb</p>
+<p>
+The dataset contains a little over 300 records, making it small but manageable for exploratory analysis.
+</p>
 
-  <h2>8. References & AI Transparency</h2>
-  <p>Dataset: Sleep Health and Lifestyle Dataset – Kaggle</p>
+<h3>Limitations</h3>
+<ul>
+  <li>Unknown data collection method</li>
+  <li>Unknown country or demographic background</li>
+  <li>Likely self‑reported values</li>
+  <li>Cannot be generalized to the entire population</li>
+</ul>
+
+<h2>3. Data Cleaning & Preparation</h2>
+<p>
+Before analysis, several cleaning steps were performed:
+</p>
+
+<ul>
+  <li>Checked for missing values</li>
+  <li>Checked for duplicate rows</li>
+  <li>Verified correct data types</li>
+  <li>Ensured numeric columns were properly formatted</li>
+  <li>Confirmed categorical columns were consistent</li>
+</ul>
+
+<p>
+There were no major missing values, so no large data removal was required.
+</p>
+
+<h2>4. Exploratory Data Analysis</h2>
+
+<h3>Sleep Duration Distribution</h3>
+<p>
+A histogram revealed that most individuals sleep between 6 and 7 hours, with 6.5–7 hours being the most common.
+</p>
+<img src="images/sleep_distribution.png" class="chart">
+
+<h3>Sleep Duration by Occupation</h3>
+<p>
+Doctors and engineers have the widest range of sleep duration, while some occupations show more consistent patterns.
+</p>
+<img src="images/sleep_by_occupation.png" class="chart">
+
+<h3>Stress Level vs Sleep Duration</h3>
+<p>
+A clear negative relationship exists: higher stress levels are associated with shorter sleep duration.
+</p>
+<img src="images/stress_vs_sleep.png" class="chart">
+
+<h2>5. Storytelling & Interpretation</h2>
+<p>
+The strongest insight is the stress–sleep relationship: higher stress levels are consistently associated with shorter sleep duration.
+Occupation also influences sleep patterns, though less strongly.
+</p>
+
+<p>
+However, correlation does not imply causation. Other factors may be involved.
+</p>
+
+<h2>6. Limitations, Ethics & Reflection</h2>
+<ul>
+  <li>Small sample size</li>
+  <li>Self‑reported values</li>
+  <li>No demographic or geographic context</li>
+  <li>Missing variables like work hours or screen time</li>
+</ul>
+
+<p>
+If I had more time, I would explore sleep quality, compare age groups, and build a regression model.
+</p>
+
+<h2>7. Code</h2>
+<p>
+Notebook: <strong>Project_1_Defining_a_Data_Science_Problem_&_Understanding_Data.ipynb</strong>
+</p>
+
+<h2>8. References & AI Transparency</h2>
+<p>Dataset: Sleep Health and Lifestyle Dataset – Kaggle</p>
+
 </section>
 
 <footer>
