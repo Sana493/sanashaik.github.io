@@ -2,110 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Project 1 – Sleep Health & Lifestyle Dataset</title>
+  <title>Project 1 – Sleep Health & Lifestyle Analysis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="hero">
-    <h1>Project 1 – Sleep Health & Lifestyle Analysis</h1>
-    <p class="subtitle">Exploring how stress, occupation, and lifestyle relate to sleep</p>
-    <a href="index.html" class="btn btn-outline">← Back to Home</a>
-  </header>
+<nav class="navbar">
+  <div class="nav-left logo">SS</div>
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
 
-  <!-- CONTENT -->
-  <section class="blog-content">
+<header class="hero small-hero">
+  <h1>Sleep Health & Lifestyle Analysis</h1>
+  <p class="subtitle">A Data Science Exploration by Sana Shaik</p>
+</header>
 
-    <h2>1. Problem Definition</h2>
-    <p>
-      Sleep is essential for both physical and mental health, yet many people struggle to get enough rest due to stress, work demands, or lifestyle habits. In this project, I explored several questions:
-    </p>
-    <ul>
-      <li>How much do people sleep on average?</li>
-      <li>Does sleep duration vary by occupation?</li>
-      <li>Is there a relationship between stress level and sleep duration?</li>
-      <li>What patterns exist between lifestyle factors and sleep?</li>
-    </ul>
-    <p>
-      These questions matter because sleep affects productivity, mood, heart health, and overall well‑being. Students, workers, and healthcare professionals may care about understanding how stress and occupation influence sleep habits.
-    </p>
+<section class="blog-content">
+  <!-- Your full Project 1 write-up goes here -->
+  <h2>1. Problem Definition</h2>
+  <p>Sleep is essential for both physical and mental health...</p>
 
-    <h2>2. Data Description</h2>
-    <p>
-      The dataset comes from Kaggle and is called the <strong>Sleep Health and Lifestyle Dataset</strong>. Each row represents one individual and includes:
-    </p>
-    <ul>
-      <li>Gender, Age, Occupation</li>
-      <li>Sleep Duration (hours)</li>
-      <li>Quality of Sleep</li>
-      <li>Stress Level</li>
-      <li>Physical Activity Level</li>
-      <li>BMI Category</li>
-      <li>Heart Rate</li>
-      <li>Daily Steps</li>
-    </ul>
-    <p>
-      The dataset contains a little over 300 records. One limitation is that we do not know how the data was collected or from which country, so results cannot be generalized broadly.
-    </p>
+  <h2>2. Data Description</h2>
+  <p>The dataset comes from Kaggle...</p>
 
-    <h2>3. Data Cleaning & Preparation</h2>
-    <p>I performed several cleaning steps:</p>
-    <ul>
-      <li>Checked for missing values</li>
-      <li>Checked for duplicate rows</li>
-      <li>Verified numeric and categorical data types</li>
-      <li>Ensured sleep duration and stress level were numeric</li>
-    </ul>
-    <p>
-      There were no major missing values. I assumed the data was self‑reported and recorded correctly.
-    </p>
+  <h2>3. Data Cleaning & Preparation</h2>
+  <p>I checked for missing values...</p>
 
-    <h2>4. Exploratory Data Analysis (EDA)</h2>
-    <p><strong>Sleep Duration Distribution:</strong> Most people sleep between 6–7 hours, with 6.5–7 being the most common.</p>
-    <p><strong>Sleep by Occupation:</strong> Doctors and engineers show wider variation; some occupations have slightly lower median sleep.</p>
-    <p><strong>Stress vs. Sleep:</strong> A clear negative relationship — higher stress is associated with shorter sleep duration.</p>
-    <p><strong>Correlation Heatmap:</strong> Sleep duration negatively correlates with stress; physical activity and steps are positively correlated.</p>
+  <h2>4. Exploratory Data Analysis</h2>
+  <p>Most people sleep between 6–7 hours...</p>
 
-    <h2>5. Storytelling & Interpretation</h2>
-    <p>
-      The strongest pattern is the relationship between stress and sleep. Higher stress levels are linked to shorter sleep duration. Occupation also plays a role, though the patterns are less strong. Most people in the dataset sleep around 6–7 hours.
-    </p>
-    <p>
-      However, correlation does not imply causation. Many other factors — work hours, lifestyle habits, or health conditions — could influence these patterns.
-    </p>
+  <h2>5. Storytelling & Interpretation</h2>
+  <p>The strongest relationship is between stress and sleep...</p>
 
-    <h2>6. Limitations, Ethics & Reflection</h2>
-    <p>Key limitations include:</p>
-    <ul>
-      <li>Small sample size</li>
-      <li>Unknown data collection method</li>
-      <li>Likely self‑reported values</li>
-      <li>No demographic or geographic context</li>
-    </ul>
-    <p>
-      I was surprised by how consistent sleep duration was across the dataset. If I had more time, I would explore sleep quality, age groups, and build a simple regression model.
-    </p>
+  <h2>6. Limitations & Reflection</h2>
+  <p>The dataset is small and self‑reported...</p>
 
-    <h2>7. Code</h2>
-    <p>
-      My full code includes loading the dataset, cleaning steps, histograms, boxplots, scatter plots, and a correlation heatmap.  
-      You can view the full notebook here:
-    </p>
-    <p><strong><a href='https://github.com/Sana493/Projects-/blob/main/Project_1_Defining_a_Data_Science_Problem_%26_Understanding_Data.ipynb'> link to the notebook </a></strong></p>
+  <h2>7. Code</h2>
+  <p>Notebook: Project_1_Defining_a_Data_Science_Problem_&_Understanding_Data.ipynb</p>
 
-    <h2>8. References & AI Transparency</h2>
-    <p><strong>Dataset Source:</strong> Sleep Health and Lifestyle Dataset – Kaggle</p>
-    <p><strong>AI Use Transparency:</strong> I used ChatGPT (GPT‑5.2) to help structure and refine my project narrative.</p>
+  <h2>8. References & AI Transparency</h2>
+  <p>Dataset: Sleep Health and Lifestyle Dataset – Kaggle</p>
+</section>
 
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Sana Shaik</p>
-  </footer>
+<footer>
+  <p>© 2026 Sana Shaik</p>
+</footer>
 
 </body>
 </html>
