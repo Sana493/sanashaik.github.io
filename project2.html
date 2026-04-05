@@ -128,7 +128,7 @@
 <h2>The Question That Started This</h2>
 
 <p>
-  Diabetes has always been a part of my life — not just something I learned about in a classroom,
+  Diabetes has always been a part of my life, not just something I learned about in a classroom,
   but something I've watched up close in my own family. The daily routines, the careful meals,
   the glucose checks. And through all of it, one thing stood out: everything seemed to hinge
   on a single number. <strong>Blood sugar.</strong>
@@ -137,19 +137,19 @@
 <p>
   That observation became a question I couldn't shake: <em>what if that number wasn't available?</em>
   In real healthcare settings, data is missing all the time. A patient might not have had
-  a recent glucose test. Records get lost. Tests don't get run. So if a prediction model
-  completely depends on glucose to work — is it actually useful in the real world?
+  a recent glucose test. Records get lost. Tests don't get run. So, if a prediction model
+  completely depends on glucose to work, is it actually useful in the real world?
 </p>
 
 <div class="callout">
-  <strong>Research Question:</strong> When the most important clinical feature — glucose — is removed,
+  <strong>Research Question:</strong> When the most important clinical feature, glucose, is removed,
   can machine learning models still make meaningful predictions about diabetes risk?
   And if so, what features step in to fill the gap?
 </div>
 
 <p>
   This isn't just an academic exercise. It's a question about whether predictive models
-  can be <em>robust</em> — built to work even when the data isn't perfect.
+  can be <em>robust</em>, built to work even when the data isn't perfect.
   That's what this investigation set out to discover.
 </p>
 
@@ -186,7 +186,7 @@
 <h2>Exploratory Data Analysis</h2>
 
 <p>
-  Before touching a model, I needed to understand the data deeply —
+  Before touching a model, I needed to understand the data deeply , 
   what each feature looks like, where the patterns are, and where the problems are.
 </p>
 
@@ -194,10 +194,10 @@
   <img src="images/histograms.png" alt="Feature distribution histograms">
   <p class="figure-caption">
     Fig 1. Distribution of all 9 variables after preprocessing. Insulin and SkinThickness are strongly
-    right-skewed — most patients cluster at lower values with a long tail of high readings.
+    right-skewed, most patients cluster at lower values with a long tail of high readings.
     Glucose follows a roughly bell-shaped distribution. The Outcome histogram reveals the class imbalance:
     approximately 500 non-diabetic cases versus 268 diabetic cases (~65/35 split).
-    This imbalance matters — a model that always guesses "no diabetes" would still be 65% accurate,
+    This imbalance matters; a model that always guesses "no diabetes" would still be 65% accurate,
     making raw accuracy a misleading metric on its own.
   </p>
 </div>
@@ -205,8 +205,8 @@
 <div class="figure-block">
   <img src="images/diabetes_heatmap.png" alt="Correlation heatmap">
   <p class="figure-caption">
-    Fig 2. Correlation heatmap across all features. Glucose has the strongest correlation with Outcome
-    at 0.49 — nearly double the next strongest predictors, BMI (0.31) and Age (0.24).
+    Fig 2. Correlation heatmap across all features. Glucose has the strongest correlation with the outcome
+    at 0.49, nearly double the next strongest predictors, BMI (0.31) and Age (0.24).
     This immediately confirmed the investigation's premise: glucose dominates, and its removal
     will meaningfully change how the model reasons. Notably, SkinThickness and BMI share a moderate
     correlation of 0.54, reflecting their shared relationship with body composition.
@@ -214,7 +214,7 @@
 </div>
 
 <div class="callout">
-  <strong>EDA insight:</strong> The correlation heatmap doesn't just show <em>what</em> predicts diabetes —
+  <strong>EDA insight:</strong> The correlation heatmap doesn't just show <em>what</em> predicts diabetes,
   it reveals the <em>structure of substitution</em>. When glucose is removed, the model will need to
   lean on BMI, Age, and Diabetes Pedigree Function. We can see this coming before running a single experiment.
 </div>
@@ -368,9 +368,9 @@
 
 <div class="insight-box">
   <strong>The pattern that matters most:</strong> As features are removed, the model doesn't
-  just become less accurate — it specifically becomes worse at detecting diabetic patients.
+  just become less accurate,  it specifically becomes worse at detecting diabetic patients.
   False negatives climb from 18 to 33. In a clinical setting, a false negative means a
-  diabetic patient is told they're fine. That's not a statistical error — it's a real health risk.
+  diabetic patient is told they're fine. That's not a statistical error,  it's a real health risk.
   This asymmetry between false positives and false negatives is exactly why accuracy alone
   isn't enough to evaluate medical models.
 </div>
@@ -396,7 +396,7 @@
     <img src="images/feature_importance_noglucose.png" alt="Feature importance — no glucose">
     <p class="figure-caption">
       Fig 6. Without Glucose, BMI rises to ~21%, followed by DiabetesPedigreeFunction
-      and Age. The model doesn't collapse — it redistributes weight to the next best signals.
+      and Age. The model doesn't collapse,  it redistributes weight to the next best signals.
     </p>
   </div>
 </div>
@@ -456,7 +456,7 @@
 <div class="insight-box">
   <strong>Personal reflection:</strong> The part of this project that stayed with me most
   wasn't the accuracy numbers — it was the false negatives. Watching that number climb from 18 to 33
-  as features were removed made it concrete. Behind each of those 33 predictions is a person
+  As features were removed, it made it concrete. Behind each of those 33 predictions is a person
   who has diabetes and would be told they don't. That's what makes getting this right matter.
 </div>
 
@@ -465,12 +465,12 @@
 <p>
   This project started as a prediction task and became something more meaningful.
   By deliberately removing the most important feature, I was able to see how models adapt,
-  what they fall back on, and precisely where — and how — they start to fail.
+  what they fall back on, and precisely where and how they start to fail.
 </p>
 
 <p>
   The core finding: <strong>even when the most important data disappears, patterns remain.</strong>
-  The model doesn't know glucose is gone — it just works with what it has.
+  The model doesn't know glucose is gone; it just works with what it has.
   And in this dataset, what's left is enough to still say something real about diabetes risk.
 </p>
 
