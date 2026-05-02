@@ -2,45 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ethically Ambiguous Data Modeling</title>
+  <title>Blog – Ethically Ambiguous Data Modeling | Sana Shaik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0a1628;--blue-dark:#0f2d5e;--blue-mid:#1a4fa0;--blue:#2563eb;--blue-soft:#3b82f6;--sky:#60a5fa;--ice:#dbeafe;--white:#ffffff;--off:#f0f6ff;--text:#1e293b;--muted:#64748b;--border:#bfdbfe;--gold:#f59e0b;--amber:#92400e;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"DM Sans",sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(37,99,235,0.2);}
+    .logo{font-family:"Playfair Display",serif;font-size:22px;font-weight:900;color:var(--white);}
+    .logo span{color:var(--sky);}
+    .nav-links{display:flex;gap:36px;}
+    .nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.04em;position:relative;transition:color 0.2s;}
+    .nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--sky);transition:width 0.25s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a:hover::after{width:100%;}
+    .page-hero{background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden;}
+    .page-hero::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.2) 0%,transparent 70%);top:-150px;right:-80px;animation:floatOrb 9s ease-in-out infinite;}
+    .page-hero::after{content:"";position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.12) 0%,transparent 70%);bottom:-60px;left:-60px;animation:floatOrb 12s ease-in-out infinite reverse;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.055) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
+    @keyframes floatOrb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-24px) scale(1.04);}}
+    .hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;}
+    .hero-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:28px;transition:color 0.2s;}
+    .hero-back:hover{color:var(--sky);}
+    .hero-back::before{content:"←";}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.14);border:1px solid rgba(96,165,250,0.28);color:var(--sky);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:24px;animation:fadeUp 0.5s ease both;}
+    .page-hero h1{font-family:"Playfair Display",serif;font-size:clamp(32px,5vw,54px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:18px;animation:fadeUp 0.5s 0.1s ease both;}
+    .page-hero h1 em{font-style:italic;color:var(--sky);}
+    .hero-sub{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:580px;font-weight:300;animation:fadeUp 0.5s 0.2s ease both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    .blog-body{max-width:720px;margin:0 auto;padding:72px 48px;}
+    .blog-body h2{font-family:"Playfair Display",serif;font-size:clamp(22px,3vw,28px);font-weight:700;color:var(--navy);line-height:1.2;margin:52px 0 16px;}
+    .blog-body h2:first-child{margin-top:0;}
+    .blog-body h3{font-size:16px;font-weight:600;color:var(--navy);margin:28px 0 10px;}
+    .blog-body p{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
+    .blog-body strong{color:var(--text);font-weight:600;}
+    .blog-body em{color:var(--blue-mid);font-style:italic;}
+    .blog-body ul,.blog-body ol{padding-left:22px;margin-bottom:18px;}
+    .blog-body li{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:8px;}
+    .callout{background:var(--off);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0;font-size:15.5px;color:var(--text);line-height:1.8;}
+    .callout strong{color:var(--blue);}
+    .insight{background:#fffbeb;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0;font-size:15.5px;color:var(--text);line-height:1.8;}
+    .insight strong{color:var(--amber);}
+    footer{background:var(--navy);border-top:1px solid rgba(96,165,250,0.1);text-align:center;padding:30px 48px;color:rgba(255,255,255,0.28);font-size:13px;}
+    footer span{color:var(--sky);}
+    @media(max-width:900px){.navbar{padding:16px 24px;}.page-hero{padding:110px 24px 64px;}.blog-body{padding:48px 24px;}}
+    @media(max-width:600px){.nav-links{gap:20px;}}
+  </style>
+</head><body>
 <nav class="navbar">
-  <div class="nav-left logo">SS</div>
-  <div class="nav-right">
+  <div class="logo">S<span>S</span></div>
+  <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="index.html#projects">Projects</a>
     <a href="index.html#blog">Blog</a>
     <a href="index.html#contact">Contact</a>
   </div>
 </nav>
-
-<header class="hero small-hero">
-  <h1>Ethically Ambiguous Data Modeling</h1>
-  <p class="subtitle">By Sana Shaik</p>
+<header class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <a href="index.html#blog" class="hero-back">Back to Blog</a>
+    <div class="hero-eyebrow">Blog · Ethics</div>
+    <h1>Ethically Ambiguous <em>Data Modeling</em></h1>
+    <p class="hero-sub">Why technically correct models can still create ethical risks — and what we owe to the people in our datasets.</p>
+  </div>
 </header>
-
-<section class="blog-content">
-  <p>
-    Data models can be technically correct and still ethically questionable. A model may achieve high
-    accuracy while reinforcing biases, excluding vulnerable groups, or making decisions that lack
-    transparency.
-  </p>
-
-  <p>
-    Ethical ambiguity arises when we treat data as neutral — when in reality, data reflects the
-    systems, inequalities, and assumptions that produced it. This blog explores how models can
-    unintentionally cause harm and why ethical reflection must be part of every data science workflow.
-  </p>
-</section>
-
-<footer>
-  <p>© 2026 Sana Shaik</p>
-</footer>
-
+<div class="blog-body">
+  <h2>When "Correct" Isn't Enough</h2>
+  <p>A model can be technically correct and still be ethically wrong. This is one of the less comfortable truths of applied data science, and one that doesn't get enough attention in introductory courses, where the focus is usually on whether the model works — not on whether it should.</p>
+  <p>Ethical ambiguity in modeling doesn't usually come from bad intentions. It comes from gaps: between who builds the model and who it affects, between what the training data captures and what the real world looks like, between the metric being optimized and the outcome that actually matters.</p>
+  <div class="callout">
+    <strong>The central tension:</strong> Optimization is about choosing a single objective and pursuing it efficiently. The real world is full of multiple, conflicting values. The moment you reduce a complex social situation to a number to be maximized, you've already made choices that some people will pay for.
+  </div>
+  <h2>Three Ways Models Become Ethically Ambiguous</h2>
+  <h3>1. The Target Variable Problem</h3>
+  <p>Every model needs something to predict. That target variable is usually a proxy for the thing we actually care about — and the gap between the proxy and the real goal is where harm often enters.</p>
+  <p>A hiring model trained to predict "employee success" might use promotion rate as the target variable. But if promotions have historically gone disproportionately to people from particular backgrounds, the model learns to screen for those backgrounds — not because they predict competence, but because they predict being treated as competent in a biased system.</p>
+  <h3>2. The Feedback Loop Problem</h3>
+  <p>Deployed models don't just observe the world — they change it. A predictive policing model that sends more officers to certain neighborhoods generates more arrests there, which becomes training data for the next model, which sends even more officers there. The model's predictions become self-fulfilling.</p>
+  <p>This feedback loop is especially dangerous when the model's outputs are treated as objective signals rather than as predictions made by a system with its own assumptions baked in.</p>
+  <h3>3. The Aggregation Problem</h3>
+  <p>Models are built on populations but applied to individuals. A credit model might accurately describe the average behavior of a demographic group while being deeply wrong about any particular person within it. When an individual is denied a loan because they belong to a group that statistically poses higher risk, they are being penalized for other people's behavior — not their own.</p>
+  <div class="insight">
+    <strong>The uncomfortable implication:</strong> Statistical fairness across groups and individual fairness to specific people are mathematically incompatible in many real-world settings. You cannot simultaneously optimize for both. Choosing which to prioritize is not a technical decision — it's a values decision.
+  </div>
+  <h2>What We Owe to the People in Our Datasets</h2>
+  <p>Every row in a dataset represents a real person who made choices, experienced outcomes, and had no say in how those experiences would be used. That carries an obligation.</p>
+  <p>At minimum, it means being honest about what your model can and cannot do. It means not overstating accuracy or hiding the cases where the model fails. It means asking who benefits from the model's outputs, and who bears the costs when it's wrong.</p>
+  <p>It also means being willing to say: <em>this is a technically feasible model, but building it would cause more harm than good, so we shouldn't build it.</em> That's a harder conversation to have — but it's one that responsible data science has to make room for.</p>
+  <div class="callout">
+    <strong>What I keep coming back to:</strong> The people who will be most affected by a model's outputs are almost never in the room when the model is built. That asymmetry — between who decides and who is affected — is the source of most of the ethical risk in applied data science. Closing that gap requires deliberate effort, not just good intentions.
+  </div>
+</div>
+<footer><p>© 2026 <span>Sana Shaik</span> · Data Science, UNC Charlotte</p></footer>
 </body>
 </html>
