@@ -2,17 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Project 1 – Sleep Health & Lifestyle Analysis</title>
+  <title>Project 1 – Sleep Health & Lifestyle | Sana Shaik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0a1628;--blue-dark:#0f2d5e;--blue-mid:#1a4fa0;--blue:#2563eb;--blue-soft:#3b82f6;--sky:#60a5fa;--ice:#dbeafe;--white:#ffffff;--off:#f0f6ff;--text:#1e293b;--muted:#64748b;--border:#bfdbfe;--gold:#f59e0b;--amber:#92400e;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(37,99,235,0.2);}
+    .logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--white);}
+    .logo span{color:var(--sky);}
+    .nav-links{display:flex;gap:36px;}
+    .nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.04em;position:relative;transition:color 0.2s;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--sky);transition:width 0.25s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a:hover::after{width:100%;}
+    .page-hero{background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.2) 0%,transparent 70%);top:-150px;right:-80px;animation:floatOrb 9s ease-in-out infinite;}
+    .page-hero::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.12) 0%,transparent 70%);bottom:-60px;left:-60px;animation:floatOrb 12s ease-in-out infinite reverse;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.055) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
+    @keyframes floatOrb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-24px) scale(1.04);}}
+    .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+    .hero-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:28px;transition:color 0.2s;}
+    .hero-back:hover{color:var(--sky);}
+    .hero-back::before{content:'←';}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.14);border:1px solid rgba(96,165,250,0.28);color:var(--sky);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:24px;animation:fadeUp 0.5s ease both;}
+    .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,60px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:18px;animation:fadeUp 0.5s 0.1s ease both;}
+    .page-hero h1 em{font-style:italic;color:var(--sky);}
+    .hero-sub{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:580px;font-weight:300;animation:fadeUp 0.5s 0.2s ease both;}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-top:36px;animation:fadeUp 0.5s 0.3s ease both;}
+    .meta-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.45);font-size:13px;}
+    .meta-item span{color:rgba(255,255,255,0.75);font-weight:500;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    .stat-strip{background:var(--blue-dark);border-bottom:1px solid rgba(96,165,250,0.15);}
+    .stat-strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+    .stat-item{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.07);}
+    .stat-item:last-child{border-right:none;}
+    .stat-val{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--white);line-height:1;margin-bottom:6px;}
+    .stat-val .a{color:var(--sky);}
+    .stat-lbl{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;}
+    .content-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:56px;padding:72px 48px;align-items:start;}
+    .main-col h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--navy);line-height:1.2;margin:52px 0 16px;}
+    .main-col h2:first-child{margin-top:0;}
+    .main-col h3{font-size:16px;font-weight:600;color:var(--navy);margin:28px 0 10px;}
+    .main-col p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+    .main-col strong{color:var(--text);font-weight:600;}
+    .main-col em{color:var(--blue-mid);font-style:italic;}
+    .main-col ul,.main-col ol{padding-left:22px;margin-bottom:16px;}
+    .main-col li{font-size:15.5px;color:var(--muted);line-height:1.75;margin-bottom:6px;}
+    .main-col code{background:var(--ice);color:var(--blue-mid);font-size:13px;padding:2px 7px;border-radius:4px;font-family:'Courier New',monospace;}
+    .callout{background:var(--off);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0;font-size:15.5px;color:var(--text);line-height:1.8;}
+    .callout strong{color:var(--blue);}
+    .insight{background:#fffbeb;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0;font-size:15.5px;color:var(--text);line-height:1.8;}
+    .insight strong{color:var(--amber);}
+    .chart-block{margin:28px 0;text-align:center;}
+    .chart-block img{width:100%;max-width:700px;border-radius:12px;border:1px solid var(--border);box-shadow:0 8px 32px rgba(37,99,235,0.08);}
+    .chart-caption{margin-top:10px;font-size:13.5px;color:var(--muted);font-style:italic;line-height:1.6;}
+    .two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0;}
+    .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 30px;}
+    .exp-card{border:1px solid var(--border);border-radius:12px;padding:18px 20px;background:var(--off);transition:box-shadow 0.2s,transform 0.2s;}
+    .exp-card:hover{box-shadow:0 8px 24px rgba(37,99,235,0.1);transform:translateY(-2px);}
+    .exp-card h4{color:var(--blue);margin-bottom:8px;font-size:14px;font-weight:700;}
+    .exp-card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.7;}
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 30px;}
+    .result-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--white);text-align:center;transition:box-shadow 0.2s;}
+    .result-card:hover{box-shadow:0 8px 24px rgba(37,99,235,0.1);}
+    .result-card .rname{font-weight:700;color:var(--blue);font-size:14px;margin-bottom:10px;}
+    .result-card .rv{font-size:13.5px;color:var(--muted);line-height:1.65;}
+    .sidebar{position:sticky;top:90px;display:flex;flex-direction:column;gap:18px;}
+    .side-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 20px;}
+    .side-card h4{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+    .side-card h4::before{content:'';width:16px;height:2px;background:var(--blue);border-radius:2px;}
+    .toc-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
+    .toc-list a{display:block;font-size:13px;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:6px;border-left:2px solid transparent;transition:color 0.2s,background 0.2s,border-color 0.2s;}
+    .toc-list a:hover{color:var(--blue);background:var(--ice);border-color:var(--blue);}
+    .tag-cloud{display:flex;flex-wrap:wrap;gap:7px;}
+    .tag{background:var(--ice);color:var(--blue-mid);font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;}
+    .key-findings{display:flex;flex-direction:column;gap:10px;}
+    .kf-item{display:flex;gap:10px;align-items:flex-start;}
+    .kf-num{width:24px;height:24px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .kf-item p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+    footer{background:var(--navy);border-top:1px solid rgba(96,165,250,0.1);text-align:center;padding:30px 48px;color:rgba(255,255,255,0.28);font-size:13px;}
+    footer span{color:var(--sky);}
+    @media(max-width:960px){.content-wrap{grid-template-columns:1fr;padding:48px 24px;}.sidebar{position:static;}.navbar{padding:16px 24px;}.page-hero{padding:110px 24px 64px;}.stat-strip-inner{grid-template-columns:1fr 1fr;}.two-charts,.exp-grid,.result-grid{grid-template-columns:1fr;}}
+    @media(max-width:600px){.nav-links{gap:20px;}}
+  </style>
 </head>
-
 <body>
-
-<!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nav-left logo">SS</div>
-  <div class="nav-right">
+  <div class="logo">S<span>S</span></div>
+  <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="index.html#projects">Projects</a>
     <a href="index.html#blog">Blog</a>
@@ -20,136 +100,177 @@
   </div>
 </nav>
 
-<!-- HEADER -->
-<header class="hero small-hero">
-  <h1>📊 Sleep Health & Lifestyle Analysis</h1>
-  <p class="subtitle">A Data Science Exploration by Sana Shaik</p>
+<header class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <a href="index.html#projects" class="hero-back">Back to Projects</a>
+    <div class="hero-eyebrow">Project 01 · Spring 2026</div>
+    <h1>Sleep Health &amp; <em>Lifestyle Analysis</em></h1>
+    <p class="hero-sub">Exploring how stress, occupation, and daily habits shape how well — and how long — we sleep.</p>
+    <div class="hero-meta">
+      <div class="meta-item">👤 <span>Sana Shaik</span></div>
+      <div class="meta-item">🏫 <span>School of Data Science, UNCC</span></div>
+      <div class="meta-item">🛠 <span>Python · EDA · Visualization</span></div>
+    </div>
+  </div>
 </header>
 
-<!-- CONTENT -->
-<section class="blog-content">
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat-item"><div class="stat-val"><span class="a">300+</span></div><div class="stat-lbl">Records Analyzed</div></div>
+    <div class="stat-item"><div class="stat-val">10</div><div class="stat-lbl">Features Explored</div></div>
+    <div class="stat-item"><div class="stat-val"><span class="a">4</span></div><div class="stat-lbl">Research Questions</div></div>
+    <div class="stat-item"><div class="stat-val">6–7<span style="font-size:18px;font-family:'DM Sans'">hrs</span></div><div class="stat-lbl">Most Common Sleep</div></div>
+  </div>
+</div>
 
-<h2>1. Problem Definition</h2>
-<p>
-Sleep plays a critical role in physical health, mental well‑being, productivity, and long‑term disease prevention. 
-Yet many people struggle to get enough sleep due to stress, work schedules, lifestyle habits, or environmental factors.
-</p>
+<div class="content-wrap">
+  <main class="main-col">
 
-<p>This project explores four key questions:</p>
-<ul>
-  <li>How much do people sleep on average?</li>
-  <li>Does sleep duration vary by occupation?</li>
-  <li>Is there a relationship between stress level and sleep duration?</li>
-  <li>What patterns exist between lifestyle factors and sleep?</li>
-</ul>
+    <h2>Problem Definition</h2>
+    <p>Sleep plays a critical role in physical health, mental well-being, productivity, and long-term disease prevention. Yet many people struggle to get enough sleep due to stress, work schedules, lifestyle habits, or environmental factors.</p>
+    <p>This project explores four key questions:</p>
+    <ul>
+      <li>How much do people sleep on average?</li>
+      <li>Does sleep duration vary by occupation?</li>
+      <li>Is there a relationship between stress level and sleep duration?</li>
+      <li>What patterns exist between lifestyle factors and sleep?</li>
+    </ul>
+    <div class="callout">
+      <strong>Why it matters:</strong> Sleep affects nearly every aspect of daily life. Students, healthcare workers, and professionals in high-stress fields may especially benefit from understanding how stress and occupation influence their sleep patterns — and what levers they have to change them.
+    </div>
 
-<p>
-These questions matter because sleep affects nearly every aspect of daily life. Students, healthcare workers, and 
-professionals in high‑stress fields may especially benefit from understanding how stress and occupation influence sleep patterns.
-</p>
+    <h2 id="data">The Dataset</h2>
+    <p>The dataset used is the <strong>Sleep Health and Lifestyle Dataset</strong> from Kaggle. Each row represents one individual and includes demographic, occupational, and physiological data.</p>
+    <ul>
+      <li><strong>Gender</strong> — male or female</li>
+      <li><strong>Age</strong> — in years</li>
+      <li><strong>Occupation</strong> — job category</li>
+      <li><strong>Sleep Duration</strong> — hours of sleep per night</li>
+      <li><strong>Quality of Sleep</strong> — self-rated 1–10</li>
+      <li><strong>Stress Level</strong> — self-rated 1–10</li>
+      <li><strong>Physical Activity Level</strong> — minutes per day</li>
+      <li><strong>BMI Category</strong> — underweight / normal / overweight / obese</li>
+      <li><strong>Heart Rate</strong> — resting beats per minute</li>
+      <li><strong>Daily Steps</strong> — step count</li>
+    </ul>
+    <p>The dataset contains just over <strong>300 records</strong> — small but manageable for exploratory analysis.</p>
+    <div class="insight">
+      <strong>Dataset limitations:</strong> Unknown data collection method, unknown country or demographic background, likely self-reported values. Results reflect patterns within this dataset and cannot be generalized to the broader population.
+    </div>
 
-<h2>2. Data Description</h2>
-<p>
-The dataset used is the <strong>Sleep Health and Lifestyle Dataset</strong> from Kaggle. Each row represents one individual and includes:
-</p>
+    <h2 id="cleaning">Data Cleaning &amp; Preparation</h2>
+    <p>Before analysis, several cleaning steps were performed to ensure data quality and consistency:</p>
+    <ul>
+      <li>Checked for missing values — none found requiring removal</li>
+      <li>Checked for and removed duplicate rows</li>
+      <li>Verified correct data types across all columns</li>
+      <li>Ensured numeric columns were properly formatted for analysis</li>
+      <li>Confirmed categorical columns (Occupation, BMI Category) were consistent</li>
+    </ul>
+    <p>No large data removal was required, preserving the full 300+ record dataset for analysis.</p>
 
-<ul>
-  <li>Gender</li>
-  <li>Age</li>
-  <li>Occupation</li>
-  <li>Sleep Duration (hours)</li>
-  <li>Quality of Sleep</li>
-  <li>Stress Level</li>
-  <li>Physical Activity Level</li>
-  <li>BMI Category</li>
-  <li>Heart Rate</li>
-  <li>Daily Steps</li>
-</ul>
+    <h2 id="eda">Exploratory Data Analysis</h2>
 
-<p>
-The dataset contains a little over 300 records, making it small but manageable for exploratory analysis.
-</p>
+    <h3>Sleep Duration Distribution</h3>
+    <p>A histogram of sleep duration reveals that most individuals in the dataset sleep between 6 and 7 hours per night, with the 6.5–7 hour range being most common. Very few respondents reported sleeping fewer than 6 or more than 8 hours regularly.</p>
+    <div class="chart-block">
+      <img src="images/sleep_distribution.png" alt="Sleep duration distribution histogram">
+      <p class="chart-caption">Fig 1. Distribution of sleep duration across all 300+ respondents. The distribution is approximately normal, centered around 6.5–7 hours.</p>
+    </div>
 
-<h3>Limitations</h3>
-<ul>
-  <li>Unknown data collection method</li>
-  <li>Unknown country or demographic background</li>
-  <li>Likely self‑reported values</li>
-  <li>Cannot be generalized to the entire population</li>
-</ul>
+    <h3>Sleep Duration by Occupation</h3>
+    <p>When broken down by occupation, meaningful variation emerges. Some professions cluster tightly around specific sleep ranges, while others show wide spread — suggesting that the relationship between work and sleep differs significantly by field.</p>
+    <div class="chart-block">
+      <img src="images/sleep_by_occupation.png" alt="Sleep duration by occupation">
+      <p class="chart-caption">Fig 2. Sleep duration by occupation. Doctors and engineers show the widest range, while other occupations display more consistent sleep patterns.</p>
+    </div>
 
-<h2>3. Data Cleaning & Preparation</h2>
-<p>
-Before analysis, several cleaning steps were performed:
-</p>
+    <h3>Stress Level vs. Sleep Duration</h3>
+    <p>The clearest pattern in the dataset: a strong negative relationship between stress level and sleep duration. As reported stress increases, average sleep duration decreases — a relationship that holds across occupations and age groups.</p>
+    <div class="chart-block">
+      <img src="images/stress_vs_sleep.png" alt="Stress vs sleep duration scatterplot">
+      <p class="chart-caption">Fig 3. Stress level vs. sleep duration. The negative trend is consistent — higher self-reported stress is reliably associated with shorter sleep.</p>
+    </div>
 
-<ul>
-  <li>Checked for missing values</li>
-  <li>Checked for duplicate rows</li>
-  <li>Verified correct data types</li>
-  <li>Ensured numeric columns were properly formatted</li>
-  <li>Confirmed categorical columns were consistent</li>
-</ul>
+    <div class="callout">
+      <strong>The key pattern:</strong> Stress is the strongest single predictor of sleep duration in this dataset. Higher stress → shorter sleep, across occupations, genders, and age groups. This holds even after accounting for physical activity levels.
+    </div>
 
-<p>
-There were no major missing values, so no large data removal was required.
-</p>
+    <h2 id="findings">Key Findings</h2>
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="rname">Average Sleep</div>
+        <div class="rv">Most respondents sleep 6–7 hours nightly. The 6.5–7 hour range is the single most common window in the dataset.</div>
+      </div>
+      <div class="result-card">
+        <div class="rname">Occupation Matters</div>
+        <div class="rv">Doctors and engineers show the most variable sleep, suggesting high-demand professions create unpredictable schedules.</div>
+      </div>
+      <div class="result-card">
+        <div class="rname">Stress Is the Driver</div>
+        <div class="rv">The stress–sleep relationship is the strongest signal: higher stress levels consistently predict shorter sleep duration.</div>
+      </div>
+    </div>
 
-<h2>4. Exploratory Data Analysis</h2>
+    <h2>Why This Matters Beyond the Classroom</h2>
+    <p>Sleep research typically requires expensive lab equipment and longitudinal tracking. What this project demonstrates is that even a modest self-reported survey dataset can surface meaningful, actionable patterns — particularly around the stress-sleep relationship.</p>
+    <p>For students, understanding that stress management is a direct lever for sleep improvement is practically useful. For researchers, this kind of exploratory analysis suggests which variables are worth investigating more rigorously with larger, controlled datasets.</p>
 
-<h3>Sleep Duration Distribution</h3>
-<p>
-A histogram revealed that most individuals sleep between 6 and 7 hours, with 6.5–7 hours being the most common.
-</p>
-<img src="images/sleep_distribution.png" class="chart">
+    <h2 id="limitations">Limitations, Ethics &amp; Reflection</h2>
+    <ul>
+      <li><strong>Small sample size:</strong> 300+ records is enough for exploration but too small for generalizable conclusions</li>
+      <li><strong>Self-reported bias:</strong> Sleep duration and stress level are both self-reported and may not reflect objective measurements</li>
+      <li><strong>No demographic context:</strong> Unknown country, culture, or population background limits applicability</li>
+      <li><strong>Missing variables:</strong> Work hours, screen time, caffeine intake, and room environment are likely confounders not captured here</li>
+      <li><strong>Cross-sectional:</strong> A single snapshot in time — no longitudinal tracking of how these patterns evolve</li>
+    </ul>
+    <div class="insight">
+      <strong>What I'd explore next:</strong> If I had more time, I would investigate sleep quality (not just duration), compare patterns across age groups, and build a regression model to quantify the marginal impact of each variable on sleep duration while controlling for the others.
+    </div>
 
-<h3>Sleep Duration by Occupation</h3>
-<p>
-Doctors and engineers have the widest range of sleep duration, while some occupations show more consistent patterns.
-</p>
-<img src="images/sleep_by_occupation.png" class="chart">
+    <h2 id="resources">Resources &amp; AI Transparency</h2>
+    <p><strong>Dataset:</strong> Sleep Health and Lifestyle Dataset — Kaggle.</p>
+    <p><strong>Libraries:</strong> Python 3, pandas, NumPy, matplotlib, seaborn.</p>
+    <p><strong>Notebook:</strong> Project_1_Defining_a_Data_Science_Problem_&_Understanding_Data.ipynb</p>
+    <p><strong>AI Transparency:</strong> AI tools (Claude, ChatGPT) were used to assist with HTML structure and writing clarity. All research questions, analytical decisions, and interpretations were completed independently.</p>
 
-<h3>Stress Level vs Sleep Duration</h3>
-<p>
-A clear negative relationship exists: higher stress levels are associated with shorter sleep duration.
-</p>
-<img src="images/stress_vs_sleep.png" class="chart">
+  </main>
 
-<h2>5. Storytelling & Interpretation</h2>
-<p>
-The strongest insight is the stress–sleep relationship: higher stress levels are consistently associated with shorter sleep duration.
-Occupation also influences sleep patterns, though less strongly.
-</p>
+  <aside class="sidebar">
+    <div class="side-card">
+      <h4>On This Page</h4>
+      <ul class="toc-list">
+        <li><a href="#data">The Dataset</a></li>
+        <li><a href="#cleaning">Data Cleaning</a></li>
+        <li><a href="#eda">Exploratory Analysis</a></li>
+        <li><a href="#findings">Key Findings</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h4>Key Findings</h4>
+      <div class="key-findings">
+        <div class="kf-item"><div class="kf-num">1</div><p>Most people sleep 6–7 hours nightly</p></div>
+        <div class="kf-item"><div class="kf-num">2</div><p>Stress is the strongest predictor of shorter sleep</p></div>
+        <div class="kf-item"><div class="kf-num">3</div><p>Occupation creates meaningful variation in sleep patterns</p></div>
+      </div>
+    </div>
+    <div class="side-card">
+      <h4>Topics</h4>
+      <div class="tag-cloud">
+        <span class="tag">EDA</span>
+        <span class="tag">Sleep Science</span>
+        <span class="tag">Lifestyle Data</span>
+        <span class="tag">Python</span>
+        <span class="tag">Visualization</span>
+        <span class="tag">Health Data</span>
+      </div>
+    </div>
+  </aside>
+</div>
 
-<p>
-However, correlation does not imply causation. Other factors may be involved.
-</p>
-
-<h2>6. Limitations, Ethics & Reflection</h2>
-<ul>
-  <li>Small sample size</li>
-  <li>Self‑reported values</li>
-  <li>No demographic or geographic context</li>
-  <li>Missing variables like work hours or screen time</li>
-</ul>
-
-<p>
-If I had more time, I would explore sleep quality, compare age groups, and build a regression model.
-</p>
-
-<h2>7. Code</h2>
-<p>
-Notebook: <strong>Project_1_Defining_a_Data_Science_Problem_&_Understanding_Data.ipynb</strong>
-</p>
-
-<h2>8. References & AI Transparency</h2>
-<p>Dataset: Sleep Health and Lifestyle Dataset – Kaggle</p>
-
-</section>
-
-<footer>
-  <p>© 2026 Sana Shaik</p>
-</footer>
-
+<footer><p>© 2026 <span>Sana Shaik</span> · Data Science, UNC Charlotte</p></footer>
 </body>
 </html>
