@@ -2,52 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Why Data Science in Social Contexts Matters</title>
+  <title>Blog – Why Data Science in Social Contexts Matters | Sana Shaik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0a1628;--blue-dark:#0f2d5e;--blue-mid:#1a4fa0;--blue:#2563eb;--blue-soft:#3b82f6;--sky:#60a5fa;--ice:#dbeafe;--white:#ffffff;--off:#f0f6ff;--text:#1e293b;--muted:#64748b;--border:#bfdbfe;--gold:#f59e0b;--amber:#92400e;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"DM Sans",sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(37,99,235,0.2);}
+    .logo{font-family:"Playfair Display",serif;font-size:22px;font-weight:900;color:var(--white);}
+    .logo span{color:var(--sky);}
+    .nav-links{display:flex;gap:36px;}
+    .nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.04em;position:relative;transition:color 0.2s;}
+    .nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--sky);transition:width 0.25s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a:hover::after{width:100%;}
+    .page-hero{background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden;}
+    .page-hero::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.2) 0%,transparent 70%);top:-150px;right:-80px;animation:floatOrb 9s ease-in-out infinite;}
+    .page-hero::after{content:"";position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.12) 0%,transparent 70%);bottom:-60px;left:-60px;animation:floatOrb 12s ease-in-out infinite reverse;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.055) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
+    @keyframes floatOrb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-24px) scale(1.04);}}
+    .hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;}
+    .hero-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:28px;transition:color 0.2s;}
+    .hero-back:hover{color:var(--sky);}
+    .hero-back::before{content:"←";}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.14);border:1px solid rgba(96,165,250,0.28);color:var(--sky);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:24px;animation:fadeUp 0.5s ease both;}
+    .page-hero h1{font-family:"Playfair Display",serif;font-size:clamp(32px,5vw,54px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:18px;animation:fadeUp 0.5s 0.1s ease both;}
+    .page-hero h1 em{font-style:italic;color:var(--sky);}
+    .hero-sub{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:580px;font-weight:300;animation:fadeUp 0.5s 0.2s ease both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    .blog-body{max-width:720px;margin:0 auto;padding:72px 48px;}
+    .blog-body h2{font-family:"Playfair Display",serif;font-size:clamp(22px,3vw,28px);font-weight:700;color:var(--navy);line-height:1.2;margin:52px 0 16px;}
+    .blog-body h2:first-child{margin-top:0;}
+    .blog-body h3{font-size:16px;font-weight:600;color:var(--navy);margin:28px 0 10px;}
+    .blog-body p{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
+    .blog-body strong{color:var(--text);font-weight:600;}
+    .blog-body em{color:var(--blue-mid);font-style:italic;}
+    .blog-body ul,.blog-body ol{padding-left:22px;margin-bottom:18px;}
+    .blog-body li{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:8px;}
+    .callout{background:var(--off);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0;font-size:15.5px;color:var(--text);line-height:1.8;}
+    .callout strong{color:var(--blue);}
+    .insight{background:#fffbeb;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 22px;margin:28px 0;font-size:15.5px;color:var(--text);line-height:1.8;}
+    .insight strong{color:var(--amber);}
+    footer{background:var(--navy);border-top:1px solid rgba(96,165,250,0.1);text-align:center;padding:30px 48px;color:rgba(255,255,255,0.28);font-size:13px;}
+    footer span{color:var(--sky);}
+    @media(max-width:900px){.navbar{padding:16px 24px;}.page-hero{padding:110px 24px 64px;}.blog-body{padding:48px 24px;}}
+    @media(max-width:600px){.nav-links{gap:20px;}}
+  </style>
+</head><body>
 <nav class="navbar">
-  <div class="nav-left logo">SS</div>
-  <div class="nav-right">
+  <div class="logo">S<span>S</span></div>
+  <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="index.html#projects">Projects</a>
     <a href="index.html#blog">Blog</a>
     <a href="index.html#contact">Contact</a>
   </div>
 </nav>
-
-<header class="hero small-hero">
-  <h1>Why Data Science in Social Contexts Matters</h1>
-  <p class="subtitle">By Sana Shaik</p>
+<header class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <a href="index.html#blog" class="hero-back">Back to Blog</a>
+    <div class="hero-eyebrow">Blog · Reflection</div>
+    <h1>Why Data Science in <em>Social Contexts</em> Matters</h1>
+    <p class="hero-sub">On ethics, responsibility, and what interdisciplinary data science really demands of us.</p>
+  </div>
 </header>
-
-<section class="blog-content">
-  <p>
-    Data science is often seen as a technical field — algorithms, models, and code. But the truth is,
-    data science is deeply human. Every dataset represents real people, real decisions, and real
-    consequences. When we ignore the social context behind data, we risk building systems that are
-    technically correct but ethically flawed.
-  </p>
-
-  <p>
-    Understanding the social context helps us ask better questions, interpret results more carefully,
-    and design solutions that actually help people rather than harm them. Data science becomes more
-    meaningful when we connect it to lived experiences, inequalities, and the systems that shape
-    people’s opportunities.
-  </p>
-
-  <p>
-    This reflection explores why context matters — and why responsible data science requires more
-    than just technical skill.
-  </p>
-</section>
-
-<footer>
-  <p>© 2026 Sana Shaik</p>
-</footer>
-
+<div class="blog-body">
+  <h2>The Problem with "Just the Data"</h2>
+  <p>There's a common assumption in data science that if you follow the right steps — clean the data, choose the right model, validate your results — the work speaks for itself. The numbers are neutral. The model just reflects what's there.</p>
+  <p>But data never exists in a vacuum. It is always collected by someone, from someone, for some purpose. And those choices — who collects it, who it's collected from, what gets measured and what gets left out — shape every conclusion that follows.</p>
+  <div class="callout">
+    <strong>The core idea:</strong> Data science applied to social questions is not just a technical practice. It is an ethical one. The moment your model affects a real person's life — their healthcare access, their loan application, their school assignment — it carries moral weight, whether you intended it to or not.
+  </div>
+  <h2>What "Social Context" Actually Means</h2>
+  <p>When we talk about data science in social contexts, we mean cases where the data is about people — their health, their behavior, their communities — and where the outputs of analysis are used to make decisions that affect those same people.</p>
+  <p>This covers an enormous range: predictive policing algorithms, college admissions models, healthcare diagnosis tools, hiring filters, credit scoring systems. In every case, the model isn't just describing the world — it's participating in it. Its outputs become inputs to real decisions with real consequences.</p>
+  <p>That's what makes social context different from, say, predicting equipment failure in a factory. When the "output" is a person being denied care, flagged as a risk, or sorted into a less resourced school — the stakes change entirely.</p>
+  <h2>The Danger of Historical Data</h2>
+  <p>Many predictive models are trained on historical data. The implicit assumption is that history is a reasonable guide to the future — that patterns that held in the past will continue to hold.</p>
+  <p>But if the historical data reflects a world with systematic inequities — and almost all social data does — then a model trained on that data will learn to replicate those inequities. It will predict that certain groups are higher risk, not because they genuinely are, but because they were treated that way in the training data. The model launders historical discrimination into a technically rigorous output.</p>
+  <div class="insight">
+    <strong>The uncomfortable truth:</strong> A technically accurate model can be a socially harmful one. Accuracy measured against historical outcomes is not the same as fairness. In social contexts, these two things are often in direct tension.
+  </div>
+  <h2>What Interdisciplinary Data Science Demands</h2>
+  <p>Working responsibly in social contexts requires more than technical skill. It requires:</p>
+  <ul>
+    <li><strong>Domain knowledge:</strong> Understanding the context in which data was collected, and the real-world stakes of the predictions being made</li>
+    <li><strong>Ethical reasoning:</strong> Asking not just "does the model work?" but "who does it work for, and who does it work against?"</li>
+    <li><strong>Epistemic humility:</strong> Recognizing that your model is a simplification, not the truth — and that the people most affected by its outputs are often not in the room when it's built</li>
+    <li><strong>Stakeholder accountability:</strong> Taking seriously the obligation to involve, consult, and answer to the communities whose lives the model touches</li>
+  </ul>
+  <h2>Why I Think About This</h2>
+  <p>The projects I've worked on in this course are small-scale — 300 records, 70 survey responses. But even at that scale, questions of representation, bias, and harm keep appearing. Who's in the dataset? Who's left out? What does it mean to impute a missing value, or to choose which features to include?</p>
+  <p>These aren't abstract questions. They're practice for the real ones. Because the skills we build now — how we think about data, what questions we ask before we build a model — those habits carry forward into work that affects real people at real scale.</p>
+  <div class="callout">
+    <strong>What I take away:</strong> The technical part of data science is the part you can learn from a textbook. The ethical part — knowing when to ask hard questions, who to listen to, what harm might look like before it happens — that takes something different. It takes the willingness to see data not as numbers, but as records of human lives.
+  </div>
+</div>
+<footer><p>© 2026 <span>Sana Shaik</span> · Data Science, UNC Charlotte</p></footer>
 </body>
 </html>
